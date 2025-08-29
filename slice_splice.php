@@ -26,3 +26,7 @@ print_r($arr);
 array_splice($arr, 0, 5, ['ram', 'shyam', 'hari']);
 // var_dump($arr); // this could be verbose
 print_r($arr);
+
+$newnew = array_slice($arr, -4, 2);
+
+print_r($newnew);
