@@ -2,6 +2,8 @@
 
 
 
+
+
 // Numeric Index Array
 $boys = array("RAM", "HARI", "SHYAM");
 $girls = ["sita", "gita", "sunita"];

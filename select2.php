@@ -1,15 +1,22 @@
 <?php
 
+$countries = [
+    "np" => "Nepal",
+    "in" => "India",
+    "jp" => "Japan",
+    "ch" => "China"
+];
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $country = $_POST['country'];
-    if (strlen($country) == 0) {
-        echo "please select a country";
-    } else {
+    if (key_exists($country, $countries)) {
         echo "You selected $country";
+    } else {
+        echo "please select a country";
     }
 }
 
-$countries = ['']
+
 
 
 ?>
@@ -32,22 +39,31 @@ $countries = ['']
         <select name="country" id="">
 
 
-            <option value="" selected>
+            <option value="">
 
                 Select A country
             </option>
-            <option value="nepal">
 
-                Nepal
-            </option>
-            <option value="india">
+            <?php
 
-                India
-            </option>
-            <option value="el-salvador">
 
-                El Salvador
-            </option>
+
+            echo $country;
+            foreach ($countries as $code => $name) {
+
+                $isSelected = ($code == $country);
+                echo $isSelected;
+
+
+                echo (" <option value=\"$code\" selected='' >");
+                echo ($name);
+                echo (" </option >");
+            }
+
+
+            ?>
+
+
         </select>
 
 
