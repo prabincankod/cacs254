@@ -1,0 +1,41 @@
+body {
+    background-color: cadetblue;
+}
+
+
+footer {
+    margin-top: 5px;
+    padding: 10px 0;
+    border-top: 1px solid black;
+    text-align: center;
+
+}
+
+nav {
+    background-color: rgb(242, 180, 63);
+    color: white;
+    text-align: center;
+    height: 40px;
+
+}
+
+nav a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.product_info{
+
+    height: 100%;
+    width: 300px;
+    background-color: white ;
+
+    margin: auto;
+}
+.product_info img{
+    width: 200px;
+    /* height: 200px; */
+    margin: 0 auto;
+}
+
