@@ -1,29 +1,35 @@
 <?php
 $title = "Login Page";
-require "templates/header.php";
-include "data.php";
+include "templates/header.php";
+include "db.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (!key_exists($username, $users)) {
-        echo "Username Doesnot Exists";
-        exit();
-    }
 
-    if (password_verify($password, $users[$username])) {
-        // echo "password matched";
-
-        $_SESSION['username'] = $username;
-        $_SESSION['role'] = 2;
+    $sql = "SELECT * FROM users WHERE phoneno = '$username' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $user_exists = mysqli_num_rows($result);
 
 
-        echo $_SESSION['username'];
-        header("Location: /admin/");
+    if (!$user_exists) {
+        echo "User Doesnot Exists";
     } else {
-        echo "sorry password doesnot matched";
+
+
+        $user = mysqli_fetch_assoc($result);
+
+        if (password_verify($password, $user['password'])) {
+
+            $_SESSION['phoneno'] = $username;
+            $_SESSION['role'] = 2;
+
+            header("Location: /admin/");
+        } else {
+            echo "sorry password doesnot matched";
+        }
     }
 }
 
