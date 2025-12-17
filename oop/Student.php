@@ -1,13 +1,12 @@
 <?php
 
 include "Person.php";
+include "hello.php";
 class Student extends Person
 {
-
+    use hello;
     const COLLEGE = "HDC";
     public $reg_no;
-
-
 
     public function  __construct($name, $address, $reg_no)
     {
@@ -25,6 +24,7 @@ class Student extends Person
 
         parent::display_info();
         echo "registration: $this->reg_no " . Student::COLLEGE . " \n";
+        $this->hello_tanchohang();
     }
 
     public static function hello()
@@ -34,7 +34,7 @@ class Student extends Person
         echo Student::COLLEGE;
     }
 }
-// $student = new Student("Prabin Subedi", "BRT-2", 22);
-// $student->display_info();
+$student = new Student("Prabin Subedi", "BRT-2", 22);
+$student->display_info();
 
-Student::hello();
+// Student::hello();
